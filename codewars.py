@@ -74,3 +74,19 @@ def printer_error(s):
             errorCount = errorCount + 1
     return str(errorCount) + '/' + str(len(s))
             
+
+"""
+Implement a method that accepts 3 integer values a, b, c. The method should return true if a triangle can be built with the sides of given length and false in any other case.
+
+(In this case, all triangles must have surface greater than 0 to be accepted).
+"""
+def is_triangle(a, b, c):
+
+    l = sorted([a , b, c])
+    a,b,c = l[0],l[1],l[2]
+    
+    if a + b > c and a + c > b and b + c > a:
+        return True
+    else: 
+        return False
+    
