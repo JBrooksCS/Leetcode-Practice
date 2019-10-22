@@ -125,5 +125,59 @@ def longest_consec(strarr, k):
 #         print("Answer ", longestCombinedString)      
         return longestCombinedString
 
+"""
+Your objective is to complete a function createSpiral(N) that receives an integer N and returns an NxN two-dimensional array with numbers 1 through NxN represented as a clockwise spiral.
+
+Return an empty array if N < 1 or N is not int / number
+
+Examples:
+
+N = 3 Output: [[1,2,3],[8,9,4],[7,6,5]]
+
+1    2    3    
+8    9    4    
+7    6    5    
+"""
+def create_spiral(n):
+
+    if(isinstance(n, int) != True):
+        return []
+
+    counter = 1
+    print(n)
+
+    #build the grid
+    rows, cols = (n, n) 
+    arr = [[0 for i in range(cols)] for j in range(rows)] 
+    
+    startRow = 0
+    endRow = n-1
+    startCol = 0
+    endCol = n-1
+    
+    while counter <= n*n:
+        ######RIGHT
+        for i in range (startCol, endCol + 1):
+            arr[startCol][i] = counter
+            counter += 1
+        startRow += 1
         
+        ######DOWN
+        for i in range(startRow, endRow + 1):
+            arr[i][endCol] = counter
+            counter += 1
+        endCol -= 1
         
+        ######LEFT
+        for i in range(endCol, startCol - 1, -1):
+            arr[endRow][i] = counter
+            counter += 1
+        endRow -= 1
+        
+        ######UP
+        for i in range (endRow, startRow - 1, -1):
+            arr[i][startCol] = counter
+            counter += 1
+        startCol += 1
+    
+    return arr
